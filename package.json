@@ -1,0 +1,38 @@
+{
+  "name": "rerebracer1",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/R0bson/react-webpack.git"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "build-stats": "webpack --profile --json > stats.json",
+    "deploy": "gh-pages -d build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.25.0",
+    "html-webpack-plugin": "^2.22.0",
+    "purifycss-webpack-plugin": "^2.0.3",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-merge": "^0.14.1",
+    "webpack-validator": "^2.2.9"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^0.1.11",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "preact": "^6.3.0",
+    "preact-dom": "^1.0.1",
+    "purecss": "^0.6.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-lite": "^0.15.23"
+  }
+}
