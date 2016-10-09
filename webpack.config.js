@@ -6,6 +6,10 @@ const validate = require('webpack-validator');
 const parts = require('./libs/parts');
 const packageJson = require('./package.json');
 
+const TARGET = process.env.npm_lifecycle_event;
+process.env.BABEL_ENV = TARGET;
+
+
 const PATHS = {
   app  : path.join(__dirname, 'app'),
   style: [
@@ -16,6 +20,11 @@ const PATHS = {
 };
 
 const common = {
+  // Important! Do not remove ''. If you do, imports without
+  // an extension won't work anymore!
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   entry: {
     style: PATHS.style,
     app: PATHS.app
@@ -30,6 +39,22 @@ const common = {
       title: 'Webpack Demo',
     }),
   ],
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        // Enable caching for improved performance during development
+        // It uses default OS directory by default. If you need
+        // something more custom, pass a path to it.
+        // I.e., babel?cacheDirectory=<path>
+        loaders: ['babel?cacheDirectory'],
+        // Parse only app files! Without this it will go through
+        // the entire project. In addition to being slow,
+        // that will most likely result in an error.
+        include: PATHS.app
+      }
+    ]
+  }
 
 };
 
